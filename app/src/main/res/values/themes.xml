@@ -1,11 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.MonkeyArt" parent="Theme.AppCompat.NoActionBar">
-        <item name="colorPrimary">#2E7D32</item>
-        <item name="colorPrimaryDark">#1B5E20</item>
-        <item name="colorAccent">#A5D6A7</item>
-        <item name="android:windowBackground">#0D2318</item>
-        <item name="android:statusBarColor">#0D2318</item>
-        <item name="android:navigationBarColor">#0D2318</item>
-    </style>
+    <style name="Theme.MonkeyArt" parent="@android:style/Theme.NoTitleBar.Fullscreen" />
 </resources>

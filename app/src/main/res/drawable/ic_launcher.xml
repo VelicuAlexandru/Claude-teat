@@ -62,7 +62,7 @@
 
     <!-- Smile -->
     <path
-        android:fillColor="none"
+        android:fillColor="@android:color/transparent"
         android:strokeColor="#8B3A3A"
         android:strokeWidth="2"
         android:pathData="M42,50 Q54,60 66,50" />
