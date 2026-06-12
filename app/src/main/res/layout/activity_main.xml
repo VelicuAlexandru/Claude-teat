@@ -8,20 +8,21 @@
         android:id="@+id/monkeyView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/titleText" />
+        android:layout_above="@+id/waveButton" />
 
-    <TextView
-        android:id="@+id/titleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/waveButton"
+        android:layout_width="200dp"
+        android:layout_height="52dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="24dp"
-        android:text="Jungle Monkey"
-        android:textColor="#A5D6A7"
-        android:textSize="26sp"
+        android:layout_marginBottom="32dp"
+        android:text="Wave!"
+        android:textSize="18sp"
         android:textStyle="bold"
-        android:fontFamily="serif"
-        android:letterSpacing="0.1" />
+        android:textColor="#0D2318"
+        android:background="#A5D6A7"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp" />
 
 </RelativeLayout>
