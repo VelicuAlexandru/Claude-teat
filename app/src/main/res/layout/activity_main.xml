@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0D2318">
+
+    <com.monkeyart.app.MonkeyView
+        android:id="@+id/monkeyView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/buttonRow" />
+
+    <LinearLayout
+        android:id="@+id/buttonRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="32dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <Button
+            android:id="@+id/waveLeftButton"
+            android:layout_width="150dp"
+            android:layout_height="52dp"
+            android:layout_marginEnd="12dp"
+            android:text="Left wave!"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="#0D2318"
+            android:background="#A5D6A7"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp" />
+
+        <Button
+            android:id="@+id/waveRightButton"
+            android:layout_width="150dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="12dp"
+            android:text="Right wave!"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="#0D2318"
+            android:background="#A5D6A7"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp" />
+
+    </LinearLayout>
+
+</RelativeLayout>
