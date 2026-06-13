@@ -17,8 +17,8 @@ public class MonkeyView extends View {
     private Paint detailPaint;
     private RectF rect;
 
-    // Wave animation state: degrees the right arm is rotated up from rest
-    private float waveAngle = 0f;
+    private float waveAngle     = 0f;  // right arm rotation (negative = up)
+    private float waveAngleLeft = 0f;  // left arm rotation  (positive = up)
 
     private static final int BROWN_DARK   = Color.parseColor("#5D3A1A");
     private static final int BROWN_MID    = Color.parseColor("#8B5E3C");
@@ -53,8 +53,7 @@ public class MonkeyView extends View {
     }
 
     /** Triggers a 3-cycle wave of the right arm. */
-    public void wave() {
-        // 0 → -65 → 0, repeated 3 times
+    public void waveRight() {
         ValueAnimator animator = ValueAnimator.ofFloat(0f, -65f, 0f, -65f, 0f, -65f, 0f);
         animator.setDuration(1800);
         animator.setInterpolator(new AccelerateDecelerateInterpolator());
@@ -62,6 +61,21 @@ public class MonkeyView extends View {
             @Override
             public void onAnimationUpdate(ValueAnimator a) {
                 waveAngle = (float) a.getAnimatedValue();
+                invalidate();
+            }
+        });
+        animator.start();
+    }
+
+    /** Triggers a 3-cycle wave of the left arm. */
+    public void waveLeft() {
+        ValueAnimator animator = ValueAnimator.ofFloat(0f, 65f, 0f, 65f, 0f, 65f, 0f);
+        animator.setDuration(1800);
+        animator.setInterpolator(new AccelerateDecelerateInterpolator());
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator a) {
+                waveAngleLeft = (float) a.getAnimatedValue();
                 invalidate();
             }
         });
@@ -140,8 +154,13 @@ public class MonkeyView extends View {
         rect.set(cx - 30 * scale, cy + 70 * scale, cx + 30 * scale, cy + 170 * scale);
         canvas.drawRoundRect(rect, 30 * scale, 25 * scale, paint);
 
-        // Left arm (stationary)
-        drawArm(canvas, cx - 55 * scale, cy + 80 * scale, scale, true, 0f);
+        // Left arm — rotated by waveAngleLeft around the shoulder
+        float leftShoulderX = cx - 55 * scale;
+        float leftShoulderY = cy + 80 * scale;
+        canvas.save();
+        canvas.rotate(waveAngleLeft, leftShoulderX, leftShoulderY);
+        drawArm(canvas, leftShoulderX, leftShoulderY, scale, true, waveAngleLeft);
+        canvas.restore();
 
         // Right arm — rotated by waveAngle around the shoulder
         float shoulderX = cx + 55 * scale;
